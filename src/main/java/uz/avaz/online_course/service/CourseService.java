@@ -3,11 +3,12 @@ package uz.avaz.online_course.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
-import uz.avaz.online_course_app.dto.AuthorDto;
-import uz.avaz.online_course_app.dto.CourseDto;
-import uz.avaz.online_course_app.entitiy.Course;
-import uz.avaz.online_course_app.entitiy.User;
-import uz.avaz.online_course_app.repository.CourseRepository;
+import uz.avaz.online_course.dto.AuthorDto;
+import uz.avaz.online_course.dto.CourseDto;
+import uz.avaz.online_course.entitiy.Course;
+import uz.avaz.online_course.entitiy.User;
+import uz.avaz.online_course.repository.CourseRepository;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,15 +33,18 @@ public class CourseService {
         List<AuthorDto> authorDtoList = new ArrayList<>();
         for (Course course : courses) {
             for (User author : course.getAuthors()) {
-            AuthorDto authorDto = new AuthorDto(author.getId(),
+            AuthorDto authorDto = new AuthorDto
+                    (author.getId(),
                     author.getFirstName(),
                     author.getLastName(),
                     author.getEmail());
             authorDtoList.add(authorDto);
             }
-        CourseDto courseDto = new CourseDto(course.getId(),
+        CourseDto courseDto = new CourseDto(
+                course.getId(),
                 course.getName(),
                 course.getDescription(),
+                course.getStatus(),
                 authorDtoList,
                 course.getCreatedAt()
                 );

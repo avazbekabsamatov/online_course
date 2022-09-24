@@ -24,14 +24,14 @@ public class Course {
 
     private String description;
 
-
+    private Boolean status;
 
     private LocalDateTime createdAt = LocalDateTime.now();
 
 
     @ManyToMany
     @JoinTable(
-            name = "courses_authors",
+            name = "courses_users",
             joinColumns = {@JoinColumn(name = "course_id")},
             inverseJoinColumns = {@JoinColumn(name = "user_id")}
     )

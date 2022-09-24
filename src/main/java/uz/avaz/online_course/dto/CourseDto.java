@@ -14,6 +14,7 @@ public class CourseDto {
     private Long id;
     private String name;
     private String description;
+    private boolean status;
     private List<AuthorDto> authors;
     private LocalDateTime createdAt = LocalDateTime.now();
 }
